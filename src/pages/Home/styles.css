@@ -1,0 +1,16 @@
+
+.home-container {
+    margin-top: 27px;
+    margin-left: 41px;
+}
+
+.home-container p {
+    font-weight: 700;
+    color:#7E7E7E;
+    font-size: 24px;
+}
+
+.home-container h1 {
+    font-size: 48px;
+    line-height: 64px;
+}
