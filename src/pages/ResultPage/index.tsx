@@ -1,5 +1,6 @@
 import GitSearchCard from "components/GitSearchCard";
 import Navbar from "components/Navbar";
+import ResultContent from "components/ResultContent";
 import './styles.css'
 
 const ResultPage = () => {
@@ -10,7 +11,7 @@ const ResultPage = () => {
         <GitSearchCard/>
       </div>
       <div className="result-container">
-        <h1>Resultado</h1>
+        <ResultContent/>
       </div>
     </>
   );
