@@ -1,7 +1,10 @@
-.content-contaier {
+.content-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 54px;
+    
 }
 
 .search-container {
@@ -13,6 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 54px;
 }
 
 .search-container input {
