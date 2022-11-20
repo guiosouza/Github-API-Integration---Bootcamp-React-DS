@@ -6,10 +6,9 @@ import "./styles.css";
 // Objeto que representa os dados do formulário
 type FormData = {
   login: string;
-}
+};
 
 const GitSearch = () => {
-
   /*
     1 - formData: variável que ponta para o estado dos dados que está armazenando
     2 - setFormData: função que altera o estado do "formData"
@@ -30,14 +29,13 @@ const GitSearch = () => {
       2 - acessa o "name" desse objeto que vai corresponder ao atributo "login"
       3 - coloca dentro desse atributo o "value" 
     */
-    setFormData({ ...formData, [name]:value})
-
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-  }
+  };
 
   return (
     <>
@@ -54,10 +52,24 @@ const GitSearch = () => {
               placeholder="Usuário GitHub"
               onChange={handleChange}
             />
-              <button className="btn btn-primary">Encontrar</button>
+            <button className="btn btn-primary">Encontrar</button>
           </div>
         </form>
-        <ResultContent/>
+
+        <div className="result-content-card">
+          <div className="image-container">
+            <img src="" alt="Imagem do perfil" />
+          </div>
+          <div className="result-info-container">
+            <p id="info">Informações</p>
+            <div className="result">
+              <ResultContent title="Perfil" description={""} />
+              <ResultContent title="Seguidores" description={""} />
+              <ResultContent title="Localidade" description={""} />
+              <ResultContent title="Nome" description={""} />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
