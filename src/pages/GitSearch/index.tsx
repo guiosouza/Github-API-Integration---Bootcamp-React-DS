@@ -1,4 +1,6 @@
+import axios from "axios";
 import Navbar from "components/Navbar";
+import ResultContentLink from "components/ResultContenLink";
 import ResultContent from "components/ResultContent";
 import { useState } from "react";
 import "./styles.css";
@@ -8,6 +10,15 @@ type FormData = {
   login: string;
 };
 
+type GitHub = {
+  login: string,
+  avatar_url: string,
+  html_url: string,
+  followers: number,
+  location: string,
+  name: string,
+}
+
 const GitSearch = () => {
   /*
     1 - formData: variável que ponta para o estado dos dados que está armazenando
@@ -15,6 +26,9 @@ const GitSearch = () => {
     3 - useState<FormData>: fala que estamos usando o tipo de obj FormData
     4 - FormData.login = inicia string vazia
   */
+
+  const [gitHub, setGitHub] = useState<GitHub>();
+
   const [formData, setFormData] = useState<FormData>({
     login: "",
   });
@@ -34,7 +48,13 @@ const GitSearch = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+    axios.get(`https://api.github.com/users/${formData.login}`)
+    .then((response) => {
+      setGitHub(response.data)
+    })
+    .catch((error) => {
+      setGitHub(undefined)
+    })
   };
 
   return (
@@ -55,21 +75,21 @@ const GitSearch = () => {
             <button className="btn btn-primary">Encontrar</button>
           </div>
         </form>
-
-        <div className="result-content-card">
-          <div className="image-container">
-            <img src="" alt="Imagem do perfil" />
-          </div>
-          <div className="result-info-container">
-            <p id="info">Informações</p>
-            <div className="result">
-              <ResultContent title="Perfil" description={""} />
-              <ResultContent title="Seguidores" description={""} />
-              <ResultContent title="Localidade" description={""} />
-              <ResultContent title="Nome" description={""} />
+        
+        { gitHub &&
+          <div className="result-content-card">
+            <div className="image-container">
+              <img src={gitHub.avatar_url} alt="Imagem do perfil" />
+            </div>
+            <div className="result-info-container">
+              <p id="info">Informações</p>
+                <ResultContentLink title="Perfil" description={gitHub?.html_url} />
+                <ResultContent title="Seguidores" description={String(gitHub?.followers)} />
+                <ResultContent title="Localidade" description={gitHub?.location} />
+                <ResultContent title="Nome" description={gitHub?.name} />
             </div>
           </div>
-        </div>
+        } 
       </div>
     </>
   );

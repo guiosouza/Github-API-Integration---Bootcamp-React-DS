@@ -5,6 +5,14 @@
     color: #737373;
 }
 
+#link {
+    color: #0029FF
+}
+
+.input-result-content a {
+    text-decoration: none;
+}
+
 .input-result-content {
     box-sizing: border-box;
     border: 1px solid #D9D9D9;

@@ -47,7 +47,7 @@
 }
 
 .result-info-container {
-    width: 982px;
+    width: 902px;
     height: 247px;
     background-color: #FFFFFF;
     border: 1px solid #D9D9D9;
@@ -64,8 +64,7 @@
     margin-bottom: 19px;
 }
 
-.result-info-container img {
+.image-container img {
     width: 247px;
     height: 247px;
 }
-

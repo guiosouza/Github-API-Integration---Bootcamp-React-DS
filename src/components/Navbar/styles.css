@@ -14,3 +14,8 @@
     margin-left: 41px;
 }
 
+.navbar-container a, a:hover {
+    text-decoration: none;
+    color: unset;
+}
+
